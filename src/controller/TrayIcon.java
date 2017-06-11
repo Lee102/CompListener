@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,16 +29,19 @@ public class TrayIcon {
                 Image image = ImageIO.read(file);
                 final java.awt.TrayIcon trayIcon = new java.awt.TrayIcon(image, "tray icon");
                 final SystemTray tray = SystemTray.getSystemTray();
-                MenuItem close = new MenuItem("Exit");
-                ActionListener listener = new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent ae) {
-                        tray.remove(trayIcon);
-                        CompListener.setEnd(1);
-                        //System.exit(0);
-                    }
+                MenuItem about = new MenuItem("About");
+                ActionListener aboutListener = (ActionEvent ae) -> {
+                    JOptionPane.showMessageDialog(null, "CompListenerViewer\nAuthor: Łukasz Wojtas");
                 };
-                close.addActionListener(listener);
+                about.addActionListener(aboutListener);
+                popup.add(about);
+                MenuItem close = new MenuItem("Exit");
+                ActionListener closeListener = (ActionEvent ae) -> {
+                    tray.remove(trayIcon);
+                    CompListener.setEnd(1);
+                    //System.exit(0);
+                };
+                close.addActionListener(closeListener);
                 popup.add(close);
                 trayIcon.setPopupMenu(popup);
 

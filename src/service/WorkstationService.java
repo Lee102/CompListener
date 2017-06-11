@@ -7,6 +7,7 @@ package service;
 
 import dao.WorkstationDAO;
 import entity.Workstation;
+import java.util.List;
 
 /**
  *
@@ -27,46 +28,58 @@ public class WorkstationService {
         }
     }
 
-    public static Workstation findByComputerName(String computerName) {
+    public static List<Workstation> findByComputerName(String computerName) {
         try {
             workstationDAO.setSession(SessionTransaction.openSession());
-            Workstation workstation = workstationDAO.findByComputerName(computerName);
+            List<Workstation> workstationList = workstationDAO.findByComputerName(computerName);
             SessionTransaction.closeSession(workstationDAO.getSession());
-            return workstation;
+            return workstationList;
         } catch (Exception e) {
             System.err.println(e);
             return null;
         }
     }
 
-    public static Workstation findByUserDomain(String userDomain) {
+    public static List<Workstation> findByUserDomain(String userDomain) {
         try {
             workstationDAO.setSession(SessionTransaction.openSession());
-            Workstation workstation = workstationDAO.findByUserDomain(userDomain);
+            List<Workstation> workstationList = workstationDAO.findByUserDomain(userDomain);
             SessionTransaction.closeSession(workstationDAO.getSession());
-            return workstation;
+            return workstationList;
         } catch (Exception e) {
             System.err.println(e);
             return null;
         }
     }
 
-    public static Workstation findByUserName(String userName) {
+    public static List<Workstation> findByUserName(String userName) {
         try {
             workstationDAO.setSession(SessionTransaction.openSession());
-            Workstation workstation = workstationDAO.findByUserName(userName);
+            List<Workstation> workstationList = workstationDAO.findByUserName(userName);
             SessionTransaction.closeSession(workstationDAO.getSession());
-            return workstation;
+            return workstationList;
         } catch (Exception e) {
             System.err.println(e);
             return null;
         }
     }
 
-    public static Workstation findByMACAddress(byte[] macAddress) {
+    public static List<Workstation> findByMACAddress(String macAddress) {
         try {
             workstationDAO.setSession(SessionTransaction.openSession());
-            Workstation workstation = workstationDAO.findByMACAddress(macAddress);
+            List<Workstation> workstationList = workstationDAO.findByMACAddress(macAddress);
+            SessionTransaction.closeSession(workstationDAO.getSession());
+            return workstationList;
+        } catch (Exception e) {
+            System.err.println(e);
+            return null;
+        }
+    }
+    
+    public static Workstation findByAll(String computerName, String userDomain, String userName, String macAddress) {
+        try {
+            workstationDAO.setSession(SessionTransaction.openSession());
+            Workstation workstation = workstationDAO.findByAll(computerName, userDomain, userName, macAddress);
             SessionTransaction.closeSession(workstationDAO.getSession());
             return workstation;
         } catch (Exception e) {

@@ -6,6 +6,7 @@
 package dao;
 
 import entity.Workstation;
+import java.util.List;
 
 /**
  *
@@ -15,12 +16,14 @@ public interface WorkstationDAOInterface {
 
     public void save(Workstation workstation);
 
-    public Workstation findByComputerName(String computerName);
+    public List<Workstation> findByComputerName(String computerName);
 
-    public Workstation findByUserDomain(String userDomain);
+    public List<Workstation> findByUserDomain(String userDomain);
 
-    public Workstation findByUserName(String userName);
+    public List<Workstation> findByUserName(String userName);
 
-    public Workstation findByMACAddress(byte[] macAddress);
+    public List<Workstation> findByMACAddress(String macAddress);
+
+    public Workstation findByAll(String computerName, String userDomain, String userName, String macAddress);
 
 }

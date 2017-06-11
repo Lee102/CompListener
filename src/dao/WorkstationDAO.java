@@ -6,6 +6,7 @@
 package dao;
 
 import entity.Workstation;
+import java.util.List;
 import org.hibernate.Query;
 
 /**
@@ -20,29 +21,36 @@ public class WorkstationDAO extends DAO implements WorkstationDAOInterface {
     }
 
     @Override
-    public Workstation findByComputerName(String computerName) {
+    public List<Workstation> findByComputerName(String computerName) {
         Query query = getSession().createQuery("FROM Workstation WHERE computer_name=:computerName").setParameter("computerName", computerName);
-        Workstation workstation = (Workstation) query.uniqueResult();
-        return workstation;
+        List<Workstation> workstationList = query.list();
+        return workstationList;
     }
 
     @Override
-    public Workstation findByUserDomain(String userDomain) {
+    public List<Workstation> findByUserDomain(String userDomain) {
         Query query = getSession().createQuery("FROM Workstation WHERE user_domain=:userDomain").setParameter("userDomain", userDomain);
-        Workstation workstation = (Workstation) query.uniqueResult();
-        return workstation;
+        List<Workstation> workstationList = query.list();
+        return workstationList;
     }
 
     @Override
-    public Workstation findByUserName(String userName) {
+    public List<Workstation> findByUserName(String userName) {
         Query query = getSession().createQuery("FROM Workstation WHERE user_name=:userName").setParameter("userName", userName);
-        Workstation workstation = (Workstation) query.uniqueResult();
-        return workstation;
+        List<Workstation> workstationList = query.list();
+        return workstationList;
     }
 
     @Override
-    public Workstation findByMACAddress(byte[] macAddress) {
+    public List<Workstation> findByMACAddress(String macAddress) {
         Query query = getSession().createQuery("FROM Workstation WHERE mac_address=:macAddress").setParameter("macAddress", macAddress);
+        List<Workstation> workstationList = query.list();
+        return workstationList;
+    }
+
+    @Override
+    public Workstation findByAll(String computerName, String userDomain, String userName, String macAddress) {
+        Query query = getSession().createQuery("FROM Workstation WHERE computer_name=:computerName AND user_domain=:userDomain AND user_name=:userName AND mac_address=:macAddress").setParameter("computerName", computerName).setParameter("userDomain", userDomain).setParameter("userName", userName).setParameter("macAddress", macAddress);
         Workstation workstation = (Workstation) query.uniqueResult();
         return workstation;
     }

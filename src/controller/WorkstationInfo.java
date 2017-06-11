@@ -26,46 +26,26 @@ public class WorkstationInfo {
 
     public static int sendWorkstation() {
         try {
-            if (System.getenv().containsKey("COMPUTERNAME")) {
-                workstation = WorkstationService.findByComputerName(System.getenv().get("COMPUTERNAME"));
-            }
-            if (workstation == null && System.getenv().containsKey("HOSTNAME")) {
-                workstation = WorkstationService.findByUserDomain(System.getenv().get("USERDOMAIN"));
-            }
-            if (workstation == null && System.getenv().containsKey("USERNAME")) {
-                workstation = WorkstationService.findByUserName(System.getenv().get("USERNAME"));
-            }
-            if (workstation == null) {
-                try {
-                    InetAddress inetAddress = InetAddress.getLocalHost();
-                    NetworkInterface networkInterface = NetworkInterface.getByInetAddress(inetAddress);
-                    workstation = WorkstationService.findByMACAddress(networkInterface.getHardwareAddress());
-                } catch (SocketException | UnknownHostException e) {
-                    System.out.println(e.toString());
+            try {
+                InetAddress inetAddress = InetAddress.getLocalHost();
+                NetworkInterface networkInterface = NetworkInterface.getByInetAddress(inetAddress);
+                byte[] macAddress = networkInterface.getHardwareAddress();
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < macAddress.length; i++) {
+                    stringBuilder.append(String.format("%02X%s", macAddress[i], (i < macAddress.length - 1) ? "-" : ""));
                 }
-            }
-            if (workstation == null) {
-                workstation = new Workstation();
-                if (System.getenv().containsKey("COMPUTERNAME")) {
+                workstation = WorkstationService.findByAll(System.getenv().get("COMPUTERNAME"), System.getenv().get("USERDOMAIN"), System.getenv().get("USERNAME"), stringBuilder.toString());
+                if (workstation == null) {
+                    workstation = new Workstation();
                     workstation.setComputerName(System.getenv().get("COMPUTERNAME"));
-                } else {
-                    workstation.setComputerName("UNKNOWN COMPUTER");
-                }
-                if (System.getenv().containsKey("USERDOMAIN")) {
                     workstation.setUserDomain(System.getenv().get("USERDOMAIN"));
-                }
-                if (System.getenv().containsKey("USERNAME")) {
                     workstation.setUserName(System.getenv().get("USERNAME"));
+                    workstation.setMacAddress(stringBuilder.toString());
+                    WorkstationService.save(workstation);
+                    sendWorkstationAdditionalData();
                 }
-                try {
-                    InetAddress inetAddress = InetAddress.getLocalHost();
-                    NetworkInterface networkInterface = NetworkInterface.getByInetAddress(inetAddress);
-                    workstation.setMacAddress(networkInterface.getHardwareAddress());
-                } catch (SocketException | UnknownHostException e) {
-                    System.out.println(e.toString());
-                }
-                WorkstationService.save(workstation);
-                sendWorkstationAdditionalData();
+            } catch (SocketException | UnknownHostException e) {
+                System.out.println(e.toString());
             }
             return 0;
         } catch (Exception e) {
