@@ -11,13 +11,24 @@ import entity.MouseScroll;
 import java.util.List;
 
 /**
+ * Service klasy MouseScrollDAO.
  *
+ * @see MouseScrollDAO {@link MouseScrollDAO}
  * @author Łukasz Wojtas
  */
 public class MouseScrollService {
 
+    /**
+     * Prywatne, statyczne i zainicjowane pole klasy MouseScrollDAO.
+     */
     private static MouseScrollDAO mouseScrollDAO = new MouseScrollDAO();
 
+    /**
+     * Wywołanie metody save() klasy MouseScrollDAO oraz zarządanie sesją i
+     * transakcją.
+     *
+     * @param mouseScroll Parametr do metody klasy MouseScrollDAO.
+     */
     public static void save(MouseScroll mouseScroll) {
         try {
             mouseScrollDAO.setSession(SessionTransaction.openSession());
@@ -30,6 +41,12 @@ public class MouseScrollService {
         }
     }
 
+    /**
+     * Wywołanie metody saveList() klasy MouseScrollDAO oraz zarządanie sesją i
+     * transakcją.
+     *
+     * @param mouseScrollList Parametr do metody klasy MouseScrollDAO.
+     */
     public static void saveList(List<MouseScroll> mouseScrollList) {
         try {
             mouseScrollDAO.setSession(SessionTransaction.openSession());

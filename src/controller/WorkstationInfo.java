@@ -17,6 +17,7 @@ import service.WorkstationAdditionalDataService;
 import service.WorkstationService;
 
 /**
+ * Klasa używana do zbierania informacji o stacji roboczej.
  *
  * @author Łukasz Wojtas
  */
@@ -24,6 +25,16 @@ public class WorkstationInfo {
 
     private static Workstation workstation;
 
+    /**
+     * Zebranie podstawowych informacji o stacji roboczej i próba wyszukania
+     * rekordu dla tej stacji w bazie danych. W przypadku braku takiego rekordu
+     * - utworzenie go, a następnie zebranie dodatkowych informacji o stacji
+     * roboczej za pomocą metody sendWorkstationAdditionalData().
+     *
+     * @return Zwraca 0 w przypadku znalezienia rekordu dla tej stacji roboczej
+     * w bazie danych lub utworzenia takiego rekotrdu. Zwraca 1 w przypadku
+     * problemów z komunikacją z bazą danych.
+     */
     public static int sendWorkstation() {
         try {
             try {
@@ -54,6 +65,9 @@ public class WorkstationInfo {
         }
     }
 
+    /**
+     * Zebranie dodatkowych informacji o stacji roboczej.
+     */
     private static void sendWorkstationAdditionalData() {
         WorkstationAdditionalData workstationAdditionalData = new WorkstationAdditionalData();
         Long p;

@@ -23,6 +23,7 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Model encji mouse_scroll. Wygenerowany automatycznie.
  *
  * @author Łukasz Wojtas
  */
@@ -122,5 +123,5 @@ public class MouseScroll implements Serializable {
     public String toString() {
         return "entity.MouseScroll[ id=" + id + " ]";
     }
-    
+
 }

@@ -9,6 +9,7 @@ import entity.Window;
 import java.util.List;
 
 /**
+ * Interfejs klasy WindowDAO.
  *
  * @author Łukasz Wojtas
  */

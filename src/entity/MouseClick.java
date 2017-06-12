@@ -23,6 +23,7 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Model encji mouse_click. Wygenerowany automatycznie.
  *
  * @author Łukasz Wojtas
  */
@@ -148,5 +149,5 @@ public class MouseClick implements Serializable {
     public String toString() {
         return "entity.MouseClick[ id=" + id + " ]";
     }
-    
+
 }

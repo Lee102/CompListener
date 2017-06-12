@@ -9,6 +9,7 @@ import entity.MouseScroll;
 import java.util.List;
 
 /**
+ * Interfejs klasy MouseScrollDAO.
  *
  * @author Łukasz Wojtas
  */

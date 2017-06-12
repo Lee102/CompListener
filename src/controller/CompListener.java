@@ -21,18 +21,60 @@ import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 
 /**
+ * Główna klasa programu.
  *
  * @author Łukasz Wojtas
  */
 public class CompListener {
 
+    /**
+     * Prywatne, statyczne pole klasy KeyListener.
+     */
     private static KeyListener keyListener = new KeyListener();
-    private static MouseListener mouseListener = new MouseListener();
-    private static MouseScrollListener mouseScrollListener = new MouseScrollListener();
-    private static Workstation workstation;
-    private static Window window;
-    private static int mode, end = 0;
 
+    /**
+     * Prywatne, statyczne pole klasy MouseListener.
+     */
+    private static MouseListener mouseListener = new MouseListener();
+
+    /**
+     * Prywatne, statyczne pole klasy MouseScrollListener.
+     */
+    private static MouseScrollListener mouseScrollListener = new MouseScrollListener();
+
+    /**
+     * Prywatne, statyczne pole klasy Workstation. Przechowuje informacje o
+     * stacji roboczej na któej uruchomiony jest program.
+     */
+    private static Workstation workstation;
+
+    /**
+     * Prywatne, statyczne pole klasy Window. Przechowuje informacje o aktualnie
+     * otwartym oknie.
+     */
+    private static Window window;
+
+    /**
+     * Prywatne, statyczne pole typu int. Zawiera informacje o bieżącym trybie
+     * działania programu. 0 oznacza sparowanie pola workstation z bazą danych.
+     * 1 oznacza brak sparowania.
+     */
+    private static int mode;
+
+    /**
+     * Prywatne, statyczne pole typu int. Zmiania wartości na 1 oznacza że
+     * program ma zostać wyłączony.
+     */
+    private static int end = 0;
+
+    /**
+     * Metoda main. Wywołuje metodę otwierającą ikonę w System Tray. Rejestruje
+     * obiekt NativeHook w systemie. Dodaje kolejne obiekty listenerów.
+     * Uruchamia sparowanie workstation z bazą danych i rozpoczyna zbieranie
+     * danych metodą checkWindowFocus().
+     *
+     * @param args Argumenty linii poleceń.
+     */
     public static void main(String[] args) {
         TrayIcon.trayIcon();
         java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
@@ -63,6 +105,12 @@ public class CompListener {
         System.exit(0);
     }
 
+    /**
+     * Znalezienie okna które jest obecnie wybrane. Jeżeli okno to się zmieni
+     * (jest inne niż poprzednie) wysyłane są dotychczas zebrane dane (metoda
+     * sendData()), a dla nowego okna robiony zrzut ekranu (metoda snapShot(...)
+     * klasy ScreenCapture).
+     */
     private static void checkWindowFocus() {
         char[] buffer = new char[2048];
         WinDef.HWND hwnd;
@@ -91,7 +139,6 @@ public class CompListener {
                     if (mode == 1) {
                         mode = WorkstationInfo.sendWorkstation();
                     }
-                    //System.out.println("checkWindowFocus '" + pT + "' '" + cT + "'");
                     sendData();
                     User32.INSTANCE.GetWindowRect(hwnd, rect);
                     window = new Window();
@@ -105,6 +152,10 @@ public class CompListener {
         }
     }
 
+    /**
+     * Zebranie i umieszczenie w buforze danych (SendBuffer) dotyczących
+     * poprzedniego okna.
+     */
     public static void sendData() {
         List<KeyboardClick> keyboardClickList = keyListener.releaseKeyboardClickList();
         List<MouseClick> mouseClickList = mouseListener.releaseMouseClickList();
@@ -137,6 +188,11 @@ public class CompListener {
         }
     }
 
+    /**
+     * Setter pola end.
+     *
+     * @param end Wartość do zapisania do pola end.
+     */
     public static void setEnd(int end) {
         CompListener.end = end;
     }

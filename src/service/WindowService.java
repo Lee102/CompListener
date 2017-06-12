@@ -11,13 +11,24 @@ import entity.Window;
 import java.util.List;
 
 /**
+ * Service klasy WindowDAO.
  *
+ * @see WindowDAO {@link WindowDAO}
  * @author Łukasz Wojtas
  */
 public class WindowService {
 
+    /**
+     * Prywatne, statyczne i zainicjowane pole klasy WindowDAO.
+     */
     private static WindowDAO windowDAO = new WindowDAO();
 
+    /**
+     * Wywołanie metody save() klasy WindowDAO oraz zarządanie sesją i
+     * transakcją.
+     *
+     * @param window Parametr do metody klasy WindowDAO.
+     */
     public static void save(Window window) {
         try {
             windowDAO.setSession(SessionTransaction.openSession());
@@ -30,6 +41,12 @@ public class WindowService {
         }
     }
 
+    /**
+     * Wywołanie metody saveList() klasy WindowDAO oraz zarządanie sesją i
+     * transakcją.
+     *
+     * @param windowList Parametr do metody klasy WindowDAO.
+     */
     public static void saveList(List<Window> windowList) {
         try {
             windowDAO.setSession(SessionTransaction.openSession());

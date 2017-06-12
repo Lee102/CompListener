@@ -6,22 +6,30 @@
 package controller;
 
 import com.sun.jna.platform.win32.WinDef.RECT;
-import java.awt.AWTException;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
+ * Klasa używana do wykonania zrzutu ekranu dla nowo otwartego okna.
  *
  * @author Łukasz Wojtas
  */
 public class ScreenCapture {
 
+    /**
+     * Prywatna tablica bitowa zawierająca wykonany zrzut ekranu.
+     */
     private static byte[] printScreen;
 
+    /**
+     * Wykonanie zrzutu ekranu dla okna określonego przez parametr.
+     *
+     * @param rect Współrzędne lewego górnego oraz prawego dolnego wierzchołka
+     * okna.
+     */
     public static void snapShot(RECT rect) {
         try {
             Robot robot = new Robot();
@@ -37,10 +45,20 @@ public class ScreenCapture {
         }
     }
 
+    /**
+     * Getter pola printScreen.
+     *
+     * @return Wartość pola printScreen.
+     */
     public static byte[] getPrintScreen() {
         return printScreen;
     }
 
+    /**
+     * Setter pola printScreen.
+     *
+     * @param printScreen Wartość do zapisania do pola printScreen.
+     */
     public static void setPrintScreen(byte[] printScreen) {
         ScreenCapture.printScreen = printScreen;
     }

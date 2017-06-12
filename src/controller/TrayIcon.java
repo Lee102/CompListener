@@ -16,11 +16,18 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 /**
+ * Klasa używana do obsługi ikony w System Tray wraz z jej dodatkowymi
+ * funkcjami: "About" - podstawowe informacje o programie oraz "Exit" -
+ * wyłącznie programu.
  *
  * @author Łukasz Wojtas
  */
 public class TrayIcon {
 
+    /**
+     * Utworzenie ikony w System Tray, utrzymanie jej oraz obsługa dodatkowych
+     * akcji.
+     */
     public static void trayIcon() {
         try {
             if (SystemTray.isSupported()) {
@@ -39,7 +46,6 @@ public class TrayIcon {
                 ActionListener closeListener = (ActionEvent ae) -> {
                     tray.remove(trayIcon);
                     CompListener.setEnd(1);
-                    //System.exit(0);
                 };
                 close.addActionListener(closeListener);
                 popup.add(close);

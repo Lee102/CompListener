@@ -20,6 +20,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Model encji workstation_additional_data. Wygenerowany automatycznie.
  *
  * @author Łukasz Wojtas
  */
@@ -184,5 +185,5 @@ public class WorkstationAdditionalData implements Serializable {
     public String toString() {
         return "entity.WorkstationAdditionalData[ id=" + id + " ]";
     }
-    
+
 }

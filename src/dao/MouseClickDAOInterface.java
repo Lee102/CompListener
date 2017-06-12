@@ -9,6 +9,7 @@ import entity.MouseClick;
 import java.util.List;
 
 /**
+ * Interfejs klasy MouseClickDAO.
  *
  * @author Łukasz Wojtas
  */

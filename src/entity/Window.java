@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Model encji window. Wygenerowany automatycznie.
  *
  * @author Łukasz Wojtas
  */
@@ -184,5 +185,5 @@ public class Window implements Serializable {
     public String toString() {
         return "entity.Window[ id=" + id + " ]";
     }
-    
+
 }

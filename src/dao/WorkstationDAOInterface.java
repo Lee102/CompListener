@@ -9,6 +9,7 @@ import entity.Workstation;
 import java.util.List;
 
 /**
+ * Interfejs klasy WorkstationDAO.
  *
  * @author Łukasz Wojtas
  */

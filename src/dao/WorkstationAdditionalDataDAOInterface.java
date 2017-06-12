@@ -8,6 +8,7 @@ package dao;
 import entity.WorkstationAdditionalData;
 
 /**
+ * Interfejs klasy WorkstationAdditionalDataDAO.
  *
  * @author Łukasz Wojtas
  */

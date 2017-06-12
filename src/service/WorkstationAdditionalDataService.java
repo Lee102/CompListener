@@ -9,13 +9,26 @@ import dao.WorkstationAdditionalDataDAO;
 import entity.WorkstationAdditionalData;
 
 /**
+ * Service klasy WorkstationAdditionalDataDAO.
  *
+ * @see WorkstationAdditionalDataDAO {@link WorkstationAdditionalDataDAO}
  * @author Łukasz Wojtas
  */
 public class WorkstationAdditionalDataService {
 
+    /**
+     * Prywatne, statyczne i zainicjowane pole klasy
+     * WorkstationAdditionalDataService.
+     */
     private static WorkstationAdditionalDataDAO workstationAdditionalDataDAO = new WorkstationAdditionalDataDAO();
 
+    /**
+     * Wywołanie metody save() klasy WorkstationAdditionalDataDAO oraz
+     * zarządanie sesją i transakcją.
+     *
+     * @param workstationAdditionalData Parametr do metody klasy
+     * WorkstationAdditionalDataDAO.
+     */
     public static void save(WorkstationAdditionalData workstationAdditionalData) {
         try {
             workstationAdditionalDataDAO.setSession(SessionTransaction.openSession());

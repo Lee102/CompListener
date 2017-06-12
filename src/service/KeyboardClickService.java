@@ -11,13 +11,24 @@ import entity.KeyboardClick;
 import java.util.List;
 
 /**
+ * Service klasy KeyboardClickDAO.
  *
+ * @see KeyboardClickDAO {@link KeyboardClickDAO}
  * @author Łukasz Wojtas
  */
 public class KeyboardClickService {
 
+    /**
+     * Prywatne, statyczne i zainicjowane pole klasy KeyboardClickDAO.
+     */
     private static KeyboardClickDAO keyboardClickDAO = new KeyboardClickDAO();
 
+    /**
+     * Wywołanie metody save() klasy KeyboardClickDAO oraz zarządanie sesją i
+     * transakcją.
+     *
+     * @param keyboardClick Parametr do metody klasy KeyboardClickDAO.
+     */
     public static void save(KeyboardClick keyboardClick) {
         try {
             keyboardClickDAO.setSession(SessionTransaction.openSession());
@@ -30,6 +41,12 @@ public class KeyboardClickService {
         }
     }
 
+    /**
+     * Wywołanie metody saveList() klasy KeyboardClickDAO oraz zarządanie sesją
+     * i transakcją.
+     *
+     * @param keyboardClickList Parametr do metody klasy KeyboardClickDAO.
+     */
     public static void saveList(List<KeyboardClick> keyboardClickList) {
         try {
             keyboardClickDAO.setSession(SessionTransaction.openSession());

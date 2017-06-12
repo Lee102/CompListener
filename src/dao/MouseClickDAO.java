@@ -9,16 +9,27 @@ import entity.MouseClick;
 import java.util.List;
 
 /**
+ * Klasa DAO służąca do obsługi komunikacji z encją mouse_click w bazie danych.
  *
  * @author Łukasz Wojtas
  */
 public class MouseClickDAO extends DAO implements MouseClickDAOInterface {
 
+    /**
+     * Zapisanie 1 obiektu MouseClick do bazy danych.
+     *
+     * @param mouseClick Obiekt do zapisania.
+     */
     @Override
     public void save(MouseClick mouseClick) {
         getSession().save(mouseClick);
     }
 
+    /**
+     * Zapisanie listy obiektów MouseClick do bazy danych.
+     *
+     * @param mouseClickList Lista obiektów do zapisania.
+     */
     @Override
     public void saveList(List<MouseClick> mouseClickList) {
         mouseClickList.forEach((mouseClick) -> {

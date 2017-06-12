@@ -9,6 +9,7 @@ import entity.KeyboardClick;
 import java.util.List;
 
 /**
+ * Interfejs klasy KeyboardClickDAO.
  *
  * @author Łukasz Wojtas
  */
