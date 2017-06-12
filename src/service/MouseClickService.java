@@ -24,7 +24,7 @@ public class MouseClickService {
     private static MouseClickDAO mouseClickDAO = new MouseClickDAO();
 
     /**
-     * Wywołanie metody save() klasy MouseClickDAO oraz zarządanie sesją i
+     * Wywołanie metody save() klasy MouseClickDAO oraz zarządzanie sesją i
      * transakcją.
      *
      * @param mouseClick Parametr do metody klasy MouseClickDAO.
@@ -42,7 +42,7 @@ public class MouseClickService {
     }
 
     /**
-     * Wywołanie metody saveList() klasy MouseClickDAO oraz zarządanie sesją i
+     * Wywołanie metody saveList() klasy MouseClickDAO oraz zarządzanie sesją i
      * transakcją.
      *
      * @param mouseClickList Parametr do metody klasy MouseClickDAO.

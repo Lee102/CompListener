@@ -24,7 +24,7 @@ public class WorkstationAdditionalDataService {
 
     /**
      * Wywołanie metody save() klasy WorkstationAdditionalDataDAO oraz
-     * zarządanie sesją i transakcją.
+     * zarządzanie sesją i transakcją.
      *
      * @param workstationAdditionalData Parametr do metody klasy
      * WorkstationAdditionalDataDAO.

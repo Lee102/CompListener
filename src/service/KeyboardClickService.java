@@ -24,7 +24,7 @@ public class KeyboardClickService {
     private static KeyboardClickDAO keyboardClickDAO = new KeyboardClickDAO();
 
     /**
-     * Wywołanie metody save() klasy KeyboardClickDAO oraz zarządanie sesją i
+     * Wywołanie metody save() klasy KeyboardClickDAO oraz zarządzanie sesją i
      * transakcją.
      *
      * @param keyboardClick Parametr do metody klasy KeyboardClickDAO.
@@ -42,7 +42,7 @@ public class KeyboardClickService {
     }
 
     /**
-     * Wywołanie metody saveList() klasy KeyboardClickDAO oraz zarządanie sesją
+     * Wywołanie metody saveList() klasy KeyboardClickDAO oraz zarządzanie sesją
      * i transakcją.
      *
      * @param keyboardClickList Parametr do metody klasy KeyboardClickDAO.

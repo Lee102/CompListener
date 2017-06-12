@@ -23,7 +23,7 @@ public class WorkstationService {
     private static WorkstationDAO workstationDAO = new WorkstationDAO();
 
     /**
-     * Wywołanie metody save() klasy WorkstationDAO oraz zarządanie sesją i
+     * Wywołanie metody save() klasy WorkstationDAO oraz zarządzanie sesją i
      * transakcją.
      *
      * @param workstation Parametr do metody klasy WorkstationDAO.
@@ -41,7 +41,7 @@ public class WorkstationService {
 
     /**
      * Wywołanie metody findByComputerName(...) klasy WorkstationDAO oraz
-     * zarządanie sesją i transakcją.
+     * zarządzanie sesją i transakcją.
      *
      * @param computerName Parametr do metody klasy WorkstationDAO.
      * @return Wartość zwracana z metody klasy WorkstationDAO.
@@ -60,7 +60,7 @@ public class WorkstationService {
 
     /**
      * Wywołanie metody findByUserDomain(...) klasy WorkstationDAO oraz
-     * zarządanie sesją i transakcją.
+     * zarządzanie sesją i transakcją.
      *
      * @param userDomain Parametr do metody klasy WorkstationDAO.
      * @return Wartość zwracana z metody klasy WorkstationDAO.
@@ -78,8 +78,8 @@ public class WorkstationService {
     }
 
     /**
-     * Wywołanie metody findByUserName(...) klasy WorkstationDAO oraz zarządanie
-     * sesją i transakcją.
+     * Wywołanie metody findByUserName(...) klasy WorkstationDAO oraz
+     * zarządzanie sesją i transakcją.
      *
      * @param userName Parametr do metody klasy WorkstationDAO.
      * @return Wartość zwracana z metody klasy WorkstationDAO.
@@ -98,7 +98,7 @@ public class WorkstationService {
 
     /**
      * Wywołanie metody findByMACAddress(...) klasy WorkstationDAO oraz
-     * zarządanie sesją i transakcją.
+     * zarządzanie sesją i transakcją.
      *
      * @param macAddress Parametr do metody klasy WorkstationDAO.
      * @return Wartość zwracana z metody klasy WorkstationDAO.
@@ -116,7 +116,7 @@ public class WorkstationService {
     }
 
     /**
-     * Wywołanie metody findByAll(...) klasy WorkstationDAO oraz zarządanie
+     * Wywołanie metody findByAll(...) klasy WorkstationDAO oraz zarządzanie
      * sesją i transakcją.
      *
      * @param computerName Parametr do metody klasy WorkstationDAO.

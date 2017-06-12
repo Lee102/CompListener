@@ -24,7 +24,7 @@ public class WindowService {
     private static WindowDAO windowDAO = new WindowDAO();
 
     /**
-     * Wywołanie metody save() klasy WindowDAO oraz zarządanie sesją i
+     * Wywołanie metody save() klasy WindowDAO oraz zarządzanie sesją i
      * transakcją.
      *
      * @param window Parametr do metody klasy WindowDAO.
@@ -42,7 +42,7 @@ public class WindowService {
     }
 
     /**
-     * Wywołanie metody saveList() klasy WindowDAO oraz zarządanie sesją i
+     * Wywołanie metody saveList() klasy WindowDAO oraz zarządzanie sesją i
      * transakcją.
      *
      * @param windowList Parametr do metody klasy WindowDAO.

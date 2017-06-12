@@ -24,7 +24,7 @@ public class MouseScrollService {
     private static MouseScrollDAO mouseScrollDAO = new MouseScrollDAO();
 
     /**
-     * Wywołanie metody save() klasy MouseScrollDAO oraz zarządanie sesją i
+     * Wywołanie metody save() klasy MouseScrollDAO oraz zarządzanie sesją i
      * transakcją.
      *
      * @param mouseScroll Parametr do metody klasy MouseScrollDAO.
@@ -42,7 +42,7 @@ public class MouseScrollService {
     }
 
     /**
-     * Wywołanie metody saveList() klasy MouseScrollDAO oraz zarządanie sesją i
+     * Wywołanie metody saveList() klasy MouseScrollDAO oraz zarządzanie sesją i
      * transakcją.
      *
      * @param mouseScrollList Parametr do metody klasy MouseScrollDAO.
