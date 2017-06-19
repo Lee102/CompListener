@@ -30,15 +30,10 @@ public class KeyboardClickService {
      * @param keyboardClick Parametr do metody klasy KeyboardClickDAO.
      */
     public static void save(KeyboardClick keyboardClick) {
-        try {
-            keyboardClickDAO.setSession(SessionTransaction.openSession());
-            keyboardClickDAO.setTransaction(SessionTransaction.openTransaction(keyboardClickDAO.getSession()));
-            keyboardClickDAO.save(keyboardClick);
-            SessionTransaction.closeTransaction(keyboardClickDAO.getTransaction());
-        } catch (Exception e) {
-            System.err.println(e);
-            SendBuffer.addKeyboardClick(keyboardClick);
-        }
+        keyboardClickDAO.setSession(SessionTransaction.openSession());
+        keyboardClickDAO.setTransaction(SessionTransaction.openTransaction(keyboardClickDAO.getSession()));
+        keyboardClickDAO.save(keyboardClick);
+        SessionTransaction.closeTransaction(keyboardClickDAO.getTransaction());
     }
 
     /**
@@ -48,15 +43,10 @@ public class KeyboardClickService {
      * @param keyboardClickList Parametr do metody klasy KeyboardClickDAO.
      */
     public static void saveList(List<KeyboardClick> keyboardClickList) {
-        try {
-            keyboardClickDAO.setSession(SessionTransaction.openSession());
-            keyboardClickDAO.setTransaction(SessionTransaction.openTransaction(keyboardClickDAO.getSession()));
-            keyboardClickDAO.saveList(keyboardClickList);
-            SessionTransaction.closeTransaction(keyboardClickDAO.getTransaction());
-        } catch (Exception e) {
-            System.err.println(e);
-            SendBuffer.addKeyboardClickList(keyboardClickList);
-        }
+        keyboardClickDAO.setSession(SessionTransaction.openSession());
+        keyboardClickDAO.setTransaction(SessionTransaction.openTransaction(keyboardClickDAO.getSession()));
+        keyboardClickDAO.saveList(keyboardClickList);
+        SessionTransaction.closeTransaction(keyboardClickDAO.getTransaction());
     }
 
 }

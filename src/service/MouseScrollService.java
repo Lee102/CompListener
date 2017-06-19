@@ -30,15 +30,10 @@ public class MouseScrollService {
      * @param mouseScroll Parametr do metody klasy MouseScrollDAO.
      */
     public static void save(MouseScroll mouseScroll) {
-        try {
-            mouseScrollDAO.setSession(SessionTransaction.openSession());
-            mouseScrollDAO.setTransaction(SessionTransaction.openTransaction(mouseScrollDAO.getSession()));
-            mouseScrollDAO.save(mouseScroll);
-            SessionTransaction.closeTransaction(mouseScrollDAO.getTransaction());
-        } catch (Exception e) {
-            System.err.println(e);
-            SendBuffer.addMouseScroll(mouseScroll);
-        }
+        mouseScrollDAO.setSession(SessionTransaction.openSession());
+        mouseScrollDAO.setTransaction(SessionTransaction.openTransaction(mouseScrollDAO.getSession()));
+        mouseScrollDAO.save(mouseScroll);
+        SessionTransaction.closeTransaction(mouseScrollDAO.getTransaction());
     }
 
     /**
@@ -48,15 +43,10 @@ public class MouseScrollService {
      * @param mouseScrollList Parametr do metody klasy MouseScrollDAO.
      */
     public static void saveList(List<MouseScroll> mouseScrollList) {
-        try {
-            mouseScrollDAO.setSession(SessionTransaction.openSession());
-            mouseScrollDAO.setTransaction(SessionTransaction.openTransaction(mouseScrollDAO.getSession()));
-            mouseScrollDAO.saveList(mouseScrollList);
-            SessionTransaction.closeTransaction(mouseScrollDAO.getTransaction());
-        } catch (Exception e) {
-            System.err.println(e);
-            SendBuffer.addMouseScrollList(mouseScrollList);
-        }
+        mouseScrollDAO.setSession(SessionTransaction.openSession());
+        mouseScrollDAO.setTransaction(SessionTransaction.openTransaction(mouseScrollDAO.getSession()));
+        mouseScrollDAO.saveList(mouseScrollList);
+        SessionTransaction.closeTransaction(mouseScrollDAO.getTransaction());
     }
 
 }

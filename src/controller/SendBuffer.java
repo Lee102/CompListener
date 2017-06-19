@@ -118,28 +118,22 @@ public class SendBuffer {
      * Wysłanie danych z bufora na serwer.
      */
     public static void sendBuffer() {
-        List<Window> windowList = SendBuffer.windowList;
-        List<KeyboardClick> keyboardClickList = SendBuffer.keyboardClickList;
-        List<MouseClick> mouseClickList = SendBuffer.mouseClickList;
-        List<MouseScroll> mouseScrollList = SendBuffer.mouseScrollList;
-
-        SendBuffer.windowList = new ArrayList<>();
-        SendBuffer.keyboardClickList = new ArrayList<>();
-        SendBuffer.mouseClickList = new ArrayList<>();
-        SendBuffer.mouseScrollList = new ArrayList<>();
-
         try {
             if (!windowList.isEmpty()) {
                 WindowService.saveList(windowList);
+                SendBuffer.windowList = new ArrayList<>();
             }
             if (!keyboardClickList.isEmpty()) {
                 KeyboardClickService.saveList(keyboardClickList);
+                SendBuffer.keyboardClickList = new ArrayList<>();
             }
             if (!mouseClickList.isEmpty()) {
                 MouseClickService.saveList(mouseClickList);
+                SendBuffer.mouseClickList = new ArrayList<>();
             }
             if (!mouseScrollList.isEmpty()) {
                 MouseScrollService.saveList(mouseScrollList);
+                SendBuffer.mouseScrollList = new ArrayList<>();
             }
         } catch (Exception e) {
             System.err.println(e);

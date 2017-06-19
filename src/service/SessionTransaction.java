@@ -37,7 +37,7 @@ public class SessionTransaction {
      * @return Obiekt klasy Session.
      */
     public static Session openSession() {
-        return getSessionFactory().openSession();
+        return SessionTransaction.getSessionFactory().openSession();
     }
 
     /**

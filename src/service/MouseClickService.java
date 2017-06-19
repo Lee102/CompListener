@@ -30,15 +30,10 @@ public class MouseClickService {
      * @param mouseClick Parametr do metody klasy MouseClickDAO.
      */
     public static void save(MouseClick mouseClick) {
-        try {
-            mouseClickDAO.setSession(SessionTransaction.openSession());
-            mouseClickDAO.setTransaction(SessionTransaction.openTransaction(mouseClickDAO.getSession()));
-            mouseClickDAO.save(mouseClick);
-            SessionTransaction.closeTransaction(mouseClickDAO.getTransaction());
-        } catch (Exception e) {
-            System.err.println(e);
-            SendBuffer.addMouseClick(mouseClick);
-        }
+        mouseClickDAO.setSession(SessionTransaction.openSession());
+        mouseClickDAO.setTransaction(SessionTransaction.openTransaction(mouseClickDAO.getSession()));
+        mouseClickDAO.save(mouseClick);
+        SessionTransaction.closeTransaction(mouseClickDAO.getTransaction());
     }
 
     /**
@@ -48,15 +43,10 @@ public class MouseClickService {
      * @param mouseClickList Parametr do metody klasy MouseClickDAO.
      */
     public static void saveList(List<MouseClick> mouseClickList) {
-        try {
-            mouseClickDAO.setSession(SessionTransaction.openSession());
-            mouseClickDAO.setTransaction(SessionTransaction.openTransaction(mouseClickDAO.getSession()));
-            mouseClickDAO.saveList(mouseClickList);
-            SessionTransaction.closeTransaction(mouseClickDAO.getTransaction());
-        } catch (Exception e) {
-            System.err.println(e);
-            SendBuffer.addMouseClickList(mouseClickList);
-        }
+        mouseClickDAO.setSession(SessionTransaction.openSession());
+        mouseClickDAO.setTransaction(SessionTransaction.openTransaction(mouseClickDAO.getSession()));
+        mouseClickDAO.saveList(mouseClickList);
+        SessionTransaction.closeTransaction(mouseClickDAO.getTransaction());
     }
 
 }

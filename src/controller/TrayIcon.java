@@ -5,6 +5,8 @@
  */
 package controller;
 
+import java.awt.AWTException;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
@@ -12,6 +14,7 @@ import java.awt.SystemTray;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
@@ -37,13 +40,13 @@ public class TrayIcon {
                 final java.awt.TrayIcon trayIcon = new java.awt.TrayIcon(image, "tray icon");
                 final SystemTray tray = SystemTray.getSystemTray();
                 MenuItem about = new MenuItem("About");
-                ActionListener aboutListener = (ActionEvent ae) -> {
+                ActionListener aboutListener = (ActionEvent actionEvent) -> {
                     JOptionPane.showMessageDialog(null, "CompListenerViewer\nAuthor: Łukasz Wojtas");
                 };
                 about.addActionListener(aboutListener);
                 popup.add(about);
                 MenuItem close = new MenuItem("Exit");
-                ActionListener closeListener = (ActionEvent ae) -> {
+                ActionListener closeListener = (ActionEvent actionEvent) -> {
                     tray.remove(trayIcon);
                     CompListener.setEnd(1);
                 };
@@ -55,7 +58,7 @@ public class TrayIcon {
             } else {
                 System.err.println("SystemTray is not supported");
             }
-        } catch (Exception e) {
+        } catch (AWTException | HeadlessException | IOException e) {
             System.err.println(e);
         }
     }

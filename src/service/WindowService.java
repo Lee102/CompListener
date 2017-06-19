@@ -30,15 +30,15 @@ public class WindowService {
      * @param window Parametr do metody klasy WindowDAO.
      */
     public static void save(Window window) {
-        try {
+        //try {
             windowDAO.setSession(SessionTransaction.openSession());
             windowDAO.setTransaction(SessionTransaction.openTransaction(windowDAO.getSession()));
             windowDAO.save(window);
             SessionTransaction.closeTransaction(windowDAO.getTransaction());
-        } catch (Exception e) {
+        /*} catch (Exception e) {
             System.err.println(e);
             SendBuffer.addWindow(window);
-        }
+        }*/
     }
 
     /**
@@ -48,15 +48,15 @@ public class WindowService {
      * @param windowList Parametr do metody klasy WindowDAO.
      */
     public static void saveList(List<Window> windowList) {
-        try {
+        //try {
             windowDAO.setSession(SessionTransaction.openSession());
             windowDAO.setTransaction(SessionTransaction.openTransaction(windowDAO.getSession()));
             windowDAO.saveList(windowList);
             SessionTransaction.closeTransaction(windowDAO.getTransaction());
-        } catch (Exception e) {
+        /*} catch (Exception e) {
             System.err.println(e);
             SendBuffer.addWindowList(windowList);
-        }
+        }*/
     }
 
 }
